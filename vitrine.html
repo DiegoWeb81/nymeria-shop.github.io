@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nymeria - Vitrine</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+body {
+    background: #f5f5f5;
+}
+.vitrine-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 60px 0;
+}
+.vitrine-banners {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    margin-top: 10px;
+}
+.vitrine-banner-link {
+    text-decoration: none;
+    width: 1300px;
+    transition: transform 0.2s;
+}
+.vitrine-banner-link:hover {
+    transform: scale(1.03);
+}
+.vitrine-banner {
+    width: 1300px;
+    height: 500px;
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.vitrine-banner-img {
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: -150px;
+    left: 0;
+    z-index: 1;
+    filter: brightness(0.7);
+    object-position: center top;
+}
+.vitrine-banner-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 5rem;
+    font-weight: 900;
+    font-family: 'Breul Grotesk', Arial, sans-serif;
+    letter-spacing: 4px;
+    text-align: center;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+    width: 100%;
+    opacity: 0.95;
+    pointer-events: none;
+    background: none;
+    text-transform: uppercase;
+    z-index: 10;
+}
+.main-nav {
+    background: #f5f5f5;
+    border-bottom: none;
+}
+.by-noemie {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 8px;
+    margin-bottom: 32px;
+    color: #222;
+    border-bottom: none;
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Nymeria</h1>
+    </div>
+    <nav class="main-nav">
+        <a href="index.html"><b>HOME</b></a>
+        <span class="nav-sep">|</span>
+        <a href="vitrine.html"><b>PORTFOLIO</b></a>
+        <span class="nav-sep">|</span>
+        <a href="about.html"><b>ABOUT</b></a>
+    </nav>
+    <div class="by-noemie">by Noémie</div>
+    <div class="vitrine-main">
+        <div class="vitrine-banners">
+            <a href="#" class="vitrine-banner-link">
+                <div class="vitrine-banner">
+                    <img src="image/tlou.png" alt="Illustration" class="vitrine-banner-img" />
+                    <div class="vitrine-banner-title">Illustration</div>
+                </div>
+            </a>
+            <a href="#" class="vitrine-banner-link">
+                <div class="vitrine-banner">
+                    <img src="image/3d-artwork.png" alt="3D Artwork" class="vitrine-banner-img" />
+                    <div class="vitrine-banner-title">3D Artwork</div>
+                </div>
+            </a>
+            <a href="#" class="vitrine-banner-link">
+                <div class="vitrine-banner">
+                    <img src="image/graphics-design.png" alt="Graphics Design" class="vitrine-banner-img" />
+                    <div class="vitrine-banner-title">Graphics Design</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script>
+document.querySelectorAll('.vitrine-banner-img').forEach(img => {
+    img.addEventListener('mouseenter', function() {
+        img.style.transform = 'scale(1.05)';
+        img.style.transition = 'transform 0.3s cubic-bezier(.25,.8,.25,1)';
+    });
+    img.addEventListener('mouseleave', function() {
+        img.style.transform = 'scale(1)';
+    });
+});
+</script>
+</body>
+</html>
