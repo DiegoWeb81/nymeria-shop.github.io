@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nymeria - Galerie</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Popup modal styles */
+        .modal-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.35);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-bg.show {
+            animation: fadeInBg 0.35s;
+        }
+        @keyframes fadeInBg {
+            from { background: rgba(0,0,0,0); }
+            to { background: rgba(0,0,0,0.18); }
+        }
+        .modal {
+            background: rgba(255,255,255,0.92);
+            border-radius: 18px;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+            max-width: 1100px;
+            width: 90vw;
+            display: flex;
+            align-items: center;
+            padding: 40px 40px;
+            gap: 60px;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: fadeInModal 0.35s forwards;
+            position: relative;
+        }
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-img {
+        }
+        .modal-img-frame {
+            width: 420px;
+            height: 420px;
+            background: #fff;
+            border: 3px solid #222;
+                background: #f5f5f5; /* Change from white to light gray */
+                border-bottom: none; /* Ensure no border at the bottom */
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        .modal-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 0;
+        }
+        .modal-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px 32px 32px 32px;
+        }
+        .modal-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 18px;
+            font-family: 'Breul Grotesk', Arial, sans-serif;
+        }
+        .modal-meta {
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        .modal-desc {
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2rem;
+            color: #222;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        body {
+            background: #f5f5f5;
+        }
+        .gallery-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px 0 60px 0;
+        }
+        .gallery-masonry {
+            column-count: 3;
+            column-gap: 18px;
+        }
+        .gallery-img {
+            width: 100%;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+            background: #fff;
+            display: block;
+            break-inside: avoid;
+            transition: transform 0.25s cubic-bezier(.25,.8,.25,1), box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .gallery-img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+            z-index: 2;
+        }
+        @media (max-width: 1200px) {
+            .gallery-masonry {
+                column-count: 2;
+            }
+        }
+        @media (max-width: 800px) {
+            .gallery-masonry {
+                column-count: 1;
+            }
+        }
+        .by-noemie {
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 8px;
+            margin-bottom: 32px;
+            color: #222;
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header" style="background: #f5f5f5; margin: 0; padding: 0; border: none;">
+    <div style="width:100%;background:#fff;padding:32px 0 0 0;">
+        <h1 style="margin: 0;">Nymeria</h1>
+        <hr style="border: none; border-top: 2px solid #bbb; margin: 0 0 38px 0; width: 100%;" />
+    </div>
+    </div>
+    <!-- En-tête supprimé pour enlever la bande blanche -->
+    <style>
+    .header {
+        background: #f5f5f5 !important;
+    }
+    </style>
+    </div>
+    <nav class="main-nav" style="background: #f5f5f5;">
+    <a href="index.html"><b>HOME</b></a>
+    <span class="nav-sep">|</span>
+    <a href="vitrine.html"><b>PORTFOLIO</b></a>
+    <span class="nav-sep">|</span>
+    <a href="about.html"><b>ABOUT</b></a>
+    </nav>
+    <div class="by-noemie">by Noémie</div>
+    <div class="gallery-main">
+        <div class="gallery-masonry">
+            <img src="image/billie.png" alt="Billie" class="gallery-img" data-title="The art of Nymeria" data-meta="Billie Eillish - 2025" data-desc="In honor of her song “Lunch,” I created this illustration of Billie Eilish !<br>It’s available for sale for €4.00." />
+            <img src="image/cait.png" alt="Cait" class="gallery-img" data-title="Cait" data-meta="Arcane - 2025" data-desc="Fanart of Caitlyn from Arcane. Available for €4.00." />
+            <img src="image/elliedina.png" alt="Ellie Dina" class="gallery-img" data-title="Ellie Dina" data-meta="The Last of Us - 2025" data-desc="Illustration inspired by The Last of Us. Available for €4.00." />
+            <img src="image/marcus.png" alt="Marcus" class="gallery-img" data-title="Marcus" data-meta="Cyberpunk - 2025" data-desc="Cyberpunk inspired artwork. Available for €4.00." />
+            <img src="image/spiderman.png" alt="Spiderman" class="gallery-img" data-title="Spiderman" data-meta="Marvel - 2025" data-desc="Spiderman fanart. Available for €4.00." />
+            <img src="image/tlou.png" alt="The Last of Us" class="gallery-img" data-title="The Last of Us" data-meta="The Last of Us - 2025" data-desc="The Last of Us inspired illustration. Available for €4.00." />
+        </div>
+        <div class="modal-bg" id="modalBg">
+            <div class="modal" id="modal">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div style="display: flex; align-items: center; width: 100%;">
+                    <div class="modal-img-frame">
+                        <img src="" alt="" class="modal-img" id="modalImg" />
+                    </div>
+                    <div class="modal-info" style="margin-left: 56px;">
+                        <div class="modal-title" id="modalTitle"></div>
+                        <div class="modal-meta" id="modalMeta"></div>
+                        <div class="modal-desc" id="modalDesc"></div>
+                        <button id="modalContactBtn" style="margin-top:32px;padding:12px 32px;font-size:1.1rem;font-weight:600;border-radius:8px;background:none;color:#222;cursor:pointer;font-family:'Breul Grotesk',Arial,sans-serif;box-shadow:0 2px 12px rgba(0,0,0,0.10);">CONTACTS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+    // Popup modal logic
+    const images = document.querySelectorAll('.gallery-img');
+    const modalBg = document.getElementById('modalBg');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalClose = document.getElementById('modalClose');
+
+    images.forEach(img => {
+        // Animation zoom JS
+        img.addEventListener('mouseenter', function() {
+            img.style.transition = 'transform 0.25s cubic-bezier(.25,.8,.25,1), box-shadow 0.2s';
+            img.style.transform = 'scale(1.04)';
+            img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.18)';
+            img.style.zIndex = '2';
+        });
+        img.addEventListener('mouseleave', function() {
+            img.style.transform = 'scale(1)';
+            img.style.boxShadow = '0 2px 12px rgba(0,0,0,0.10)';
+            img.style.zIndex = '1';
+        });
+        img.addEventListener('click', function() {
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            modalTitle.textContent = img.getAttribute('data-title');
+            modalMeta.textContent = img.getAttribute('data-meta');
+            modalDesc.innerHTML = img.getAttribute('data-desc');
+            modalBg.style.display = 'flex';
+            modalBg.classList.add('show');
+            // Animation popup JS
+            const modal = document.getElementById('modal');
+            modal.style.opacity = '0';
+            modal.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                modal.style.transition = 'opacity 0.35s, transform 0.35s';
+                modal.style.opacity = '1';
+                modal.style.transform = 'scale(1)';
+            }, 10);
+        });
+    });
+    modalClose.addEventListener('click', function() {
+        const modal = document.getElementById('modal');
+        modal.style.transition = 'opacity 0.35s, transform 0.35s';
+        modal.style.opacity = '0';
+        modal.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            modalBg.style.display = 'none';
+            modalBg.classList.remove('show');
+        }, 350);
+    });
+    modalBg.addEventListener('click', function(e) {
+        if (e.target === modalBg) {
+            const modal = document.getElementById('modal');
+            modal.style.transition = 'opacity 0.35s, transform 0.35s';
+            modal.style.opacity = '0';
+            modal.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                modalBg.style.display = 'none';
+                modalBg.classList.remove('show');
+            }, 350);
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('modal');
+            modal.style.transition = 'opacity 0.35s, transform 0.35s';
+            modal.style.opacity = '0';
+            modal.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                modalBg.style.display = 'none';
+                modalBg.classList.remove('show');
+            }, 350);
+        }
+    });
+    modalClose.addEventListener('click', function() {
+        modalBg.style.display = 'none';
+    });
+    modalBg.addEventListener('click', function(e) {
+        if (e.target === modalBg) {
+            modalBg.style.display = 'none';
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            modalBg.style.display = 'none';
+        }
+    });
+    </script>
+    </div>
+</body>
+</html>
