@@ -1,9 +1,21 @@
+button {
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+button:hover {
+    background: #d48c6a22;
+    color: #d48c6a;
+    box-shadow: 0 2px 8px rgba(212,140,106,0.12);
+    transform: scale(1.08);
+}
+body {
+    background: #fff !important;
+}
 .portfolio-img-fill {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    background: #222;
+    background: #fff;
     border-radius: 0;
     box-shadow: none;
 }
@@ -31,7 +43,7 @@
     font-weight: 900;
     font-family: 'Breul Grotesk', Arial, sans-serif;
     color: #fff;
-    background: #222;
+    background: #fff;
     width: 100%;
     text-align: center;
     margin: 0;
@@ -46,7 +58,7 @@
     align-items: center;
     gap: 40px;
     width: 100%;
-    background: #222;
+    background: #fff;
     height: 350px;
     box-sizing: border-box;
     overflow: hidden;
@@ -80,7 +92,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: #222;
+    background: #fff;
     border-radius: 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
@@ -160,7 +172,7 @@
 .about-img img {
     width: 100%;
     max-width: 500px;
-    background: #ffffffb9;
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(255, 255, 255, 0.04);
 }
@@ -215,7 +227,7 @@ body {
     color: #aaa;
 }
 .intro {
-    background: #fcf7f4;
+    background: #fff;
     text-align: center;
     padding: 40px 0 20px 0;
 }
