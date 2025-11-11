@@ -168,119 +168,15 @@
     <div class="by-noemie">by Noémie</div>
     <div class="gallery-main">
         <div class="gallery-masonry">
-            <img src="image/billie.png" alt="Billie" class="gallery-img" data-title="The art of Nymeria" data-meta="Billie Eillish - 2025" data-desc="In honor of her song “Lunch,” I created this illustration of Billie Eilish !<br>It’s available for sale for €4.00." />
-            <img src="image/cait.png" alt="Cait" class="gallery-img" data-title="Cait" data-meta="Arcane - 2025" data-desc="Fanart of Caitlyn from Arcane. Available for €4.00." />
-            <img src="image/elliedina.png" alt="Ellie Dina" class="gallery-img" data-title="Ellie Dina" data-meta="The Last of Us - 2025" data-desc="Illustration inspired by The Last of Us. Available for €4.00." />
-            <img src="image/marcus.png" alt="Marcus" class="gallery-img" data-title="Marcus" data-meta="Cyberpunk - 2025" data-desc="Cyberpunk inspired artwork. Available for €4.00." />
-            <img src="image/spiderman.png" alt="Spiderman" class="gallery-img" data-title="Spiderman" data-meta="Marvel - 2025" data-desc="Spiderman fanart. Available for €4.00." />
-            <img src="image/tlou.png" alt="The Last of Us" class="gallery-img" data-title="The Last of Us" data-meta="The Last of Us - 2025" data-desc="The Last of Us inspired illustration. Available for €4.00." />
+            <a href="billie.html"><img src="image/billie.png" alt="Billie" class="gallery-img" /></a>
+            <a href="cait.html"><img src="image/cait.png" alt="Cait" class="gallery-img" /></a>
+            <a href="elliedina.html"><img src="image/elliedina.png" alt="Ellie Dina" class="gallery-img" /></a>
+            <a href="marcus.html"><img src="image/marcus.png" alt="Marcus" class="gallery-img" /></a>
+            <a href="spiderman.html"><img src="image/spiderman.png" alt="Spiderman" class="gallery-img" /></a>
+            <a href="tlou.html"><img src="image/tlou.png" alt="The Last of Us" class="gallery-img" /></a>
         </div>
         <div class="modal-bg" id="modalBg">
-            <div class="modal" id="modal">
-                <button class="modal-close" id="modalClose">&times;</button>
-                <div style="display: flex; align-items: center; width: 100%;">
-                    <div class="modal-img-frame">
-                        <img src="" alt="" class="modal-img" id="modalImg" />
-                    </div>
-                    <div class="modal-info" style="margin-left: 56px;">
-                        <div class="modal-title" id="modalTitle"></div>
-                        <div class="modal-meta" id="modalMeta"></div>
-                        <div class="modal-desc" id="modalDesc"></div>
-                        <button id="modalContactBtn" style="margin-top:32px;padding:12px 32px;font-size:1.1rem;font-weight:600;border-radius:8px;background:none;color:#222;cursor:pointer;font-family:'Breul Grotesk',Arial,sans-serif;box-shadow:0 2px 12px rgba(0,0,0,0.10);">CONTACTS</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <script>
-    // Popup modal logic
-    const images = document.querySelectorAll('.gallery-img');
-    const modalBg = document.getElementById('modalBg');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMeta = document.getElementById('modalMeta');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalClose = document.getElementById('modalClose');
-
-    images.forEach(img => {
-        // Animation zoom JS
-        img.addEventListener('mouseenter', function() {
-            img.style.transition = 'transform 0.25s cubic-bezier(.25,.8,.25,1), box-shadow 0.2s';
-            img.style.transform = 'scale(1.04)';
-            img.style.boxShadow = '0 4px 24px rgba(0,0,0,0.18)';
-            img.style.zIndex = '2';
-        });
-        img.addEventListener('mouseleave', function() {
-            img.style.transform = 'scale(1)';
-            img.style.boxShadow = '0 2px 12px rgba(0,0,0,0.10)';
-            img.style.zIndex = '1';
-        });
-        img.addEventListener('click', function() {
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
-            modalTitle.textContent = img.getAttribute('data-title');
-            modalMeta.textContent = img.getAttribute('data-meta');
-            modalDesc.innerHTML = img.getAttribute('data-desc');
-            modalBg.style.display = 'flex';
-            modalBg.classList.add('show');
-            // Animation popup JS
-            const modal = document.getElementById('modal');
-            modal.style.opacity = '0';
-            modal.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                modal.style.transition = 'opacity 0.35s, transform 0.35s';
-                modal.style.opacity = '1';
-                modal.style.transform = 'scale(1)';
-            }, 10);
-        });
-    });
-    modalClose.addEventListener('click', function() {
-        const modal = document.getElementById('modal');
-        modal.style.transition = 'opacity 0.35s, transform 0.35s';
-        modal.style.opacity = '0';
-        modal.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            modalBg.style.display = 'none';
-            modalBg.classList.remove('show');
-        }, 350);
-    });
-    modalBg.addEventListener('click', function(e) {
-        if (e.target === modalBg) {
-            const modal = document.getElementById('modal');
-            modal.style.transition = 'opacity 0.35s, transform 0.35s';
-            modal.style.opacity = '0';
-            modal.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                modalBg.style.display = 'none';
-                modalBg.classList.remove('show');
-            }, 350);
-        }
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const modal = document.getElementById('modal');
-            modal.style.transition = 'opacity 0.35s, transform 0.35s';
-            modal.style.opacity = '0';
-            modal.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                modalBg.style.display = 'none';
-                modalBg.classList.remove('show');
-            }, 350);
-        }
-    });
-    modalClose.addEventListener('click', function() {
-        modalBg.style.display = 'none';
-    });
-    modalBg.addEventListener('click', function(e) {
-        if (e.target === modalBg) {
-            modalBg.style.display = 'none';
-        }
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            modalBg.style.display = 'none';
-        }
-    });
-    </script>
+                <!-- Les images sont maintenant des liens vers des pages individuelles. -->
     </div>
 </body>
 </html>
